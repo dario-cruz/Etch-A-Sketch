@@ -4,6 +4,8 @@ const gridSelect = document.getElementById('GridSelect');
 // Defining elements to be created.
 
 const createGridBox = document.createElement('div');
+// Adding class for changing color later.
+createGridBox.setAttribute('id', 'pixel');
 
 // Create grid function with number arg. 
 function fillGrid(num) {
@@ -18,4 +20,11 @@ function fillGrid(num) {
     gridContainer.style.gridTemplateRows = `repeat(${Math.sqrt(num)}, 1fr)`;
 }
 
-fillGrid(64);
+fillGrid(256);
+// Defining const for elements created by the createGridBox.
+const gridPixel = document.getElementById('pixel');
+
+// Setting up even listeners for hovering. 
+gridPixel.addEventListener('mouseover', () => {
+    gridPixel.style.backgroundColor = 'black';
+})
