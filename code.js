@@ -31,7 +31,6 @@ function fillGrid(num) {
 }
 
 // Defining const for elements created by the createGridBox.
-const gridPixel = document.getElementById('pixel');
 
 fillGrid(256);
 
@@ -41,7 +40,13 @@ document.querySelectorAll('.gridpixels').forEach(item => {
     item.addEventListener('mouseover', () => {
         // Sets the css for each itme on event. 
         item.style.backgroundColor = 'black';
-    
+        
     })  
 });
 
+// Erase button functionality. 🙌🏾🙌🏾
+eraseBtn.addEventListener('click', () => {
+    document.querySelectorAll('.gridpixels').forEach(item => {
+        item.style.backgroundColor = 'white';
+    })
+})
