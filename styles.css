@@ -3,3 +3,38 @@
     margin: 0px;
     border: solid black 2px;
 }
+
+.GameContainer {
+    display: flex;
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+}
+
+.ButtonContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    height: 600px;
+    margin: 10px;
+}
+
+.GridContainer {
+    height: 600px;
+    width: 600px;
+    margin: 10px;
+}
+
+.title {
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.title h1 {
+    text-align: center;
+}
+
