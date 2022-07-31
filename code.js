@@ -2,6 +2,12 @@
 const gridContainer = document.getElementById('gridcontainer');
 const gridSelect = document.getElementById('GridSelect');
 
+// Defining buttons.
+resetBtn = document.getElementById('reset');
+chgcolBtn = document.getElementById('changecolor');
+rainBtn = document.getElementById('rainbow');
+eraseBtn = document.getElementById('erase');
+
 // Defining elements to be created.
 const createGridBox = document.createElement('div');
 
@@ -38,3 +44,4 @@ document.querySelectorAll('.gridpixels').forEach(item => {
     
     })  
 });
+
