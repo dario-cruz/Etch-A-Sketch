@@ -14,6 +14,13 @@ const createGridBox = document.createElement('div');
 // Adding class for changing color later.
 createGridBox.setAttribute('id', 'pixel');
 createGridBox.setAttribute('class', 'gridpixels');
+
+// Variable for color defining and changing. 
+let colorValue = 'black';
+
+// Random color generation
+let randomColorVal = Math.floor(Math.random()*16777215).toString(16);
+
 // Create grid function with number arg. 
 function fillGrid(num) {
     for (let i = 0; i < num; i++) {
@@ -30,23 +37,29 @@ function fillGrid(num) {
     gridContainer.style.gridTemplateRows = `repeat(${Math.sqrt(num)}, 1fr)`;
 }
 
-// Defining const for elements created by the createGridBox.
-
 fillGrid(256);
 
-// Setting up even listeners for hovering. 
-// Used a loop to apply even to multiple items.
-document.querySelectorAll('.gridpixels').forEach(item => {
-    item.addEventListener('mouseover', () => {
-        // Sets the css for each itme on event. 
-        item.style.backgroundColor = 'black';
-        
-    })  
-});
 
 // Erase button functionality. 🙌🏾🙌🏾
 resetBtn.addEventListener('click', () => {
     document.querySelectorAll('.gridpixels').forEach(item => {
         item.style.backgroundColor = 'white';
+        let colorValue = 'black'
+        return colorValue;
     })
 })
+
+// Random color button functionality
+rainBtn.addEventListener('click', () => {
+    let colorValue = Math.floor(Math.random()*16777215).toString(16);
+    return colorValue;
+})
+
+
+// Hover event for grid filling. 
+document.querySelectorAll('.gridpixels').forEach(item => {
+    item.addEventListener('mouseover', () => {
+        // Sets the css for each itme on event. 
+        item.style.backgroundColor = colorValue;
+    })  
+});
