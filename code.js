@@ -3,10 +3,10 @@ const gridContainer = document.getElementById('gridcontainer');
 const gridSelect = document.getElementById('GridSelect');
 
 // Defining buttons.
-resetBtn = document.getElementById('reset');
-chgcolBtn = document.getElementById('changecolor');
-rainBtn = document.getElementById('rainbow');
-eraseBtn = document.getElementById('erase');
+const resetBtn = document.getElementById('reset');
+const chgcolBtn = document.getElementById('changecolor');
+const rainBtn = document.getElementById('rainbow');
+const eraseBtn = document.getElementById('erase');
 
 // Defining elements to be created.
 const createGridBox = document.createElement('div');
@@ -45,7 +45,7 @@ document.querySelectorAll('.gridpixels').forEach(item => {
 });
 
 // Erase button functionality. 🙌🏾🙌🏾
-eraseBtn.addEventListener('click', () => {
+resetBtn.addEventListener('click', () => {
     document.querySelectorAll('.gridpixels').forEach(item => {
         item.style.backgroundColor = 'white';
     })
