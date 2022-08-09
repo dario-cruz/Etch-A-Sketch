@@ -16,6 +16,8 @@ const createGridBox = document.createElement('div');
 createGridBox.setAttribute('id', 'pixel');
 createGridBox.setAttribute('class', 'gridpixels');
 
+const gridAt = document.querySelectorAll('.gridpixels')
+
 
 
 // Variable for color defining and changing. 
@@ -23,6 +25,12 @@ let colorValue = 'black';
 
 // Random color generation
 let randomColorVal = Math.floor(Math.random()*16777215).toString(16);
+
+function ranCol() {
+    let colVal = Math.floor(Math.random()*16777215).toString(16);
+    return colVal;
+} 
+
 
 // Create grid function with number arg. 
 function fillGrid(num) {
@@ -40,11 +48,12 @@ function fillGrid(num) {
     gridContainer.style.gridTemplateRows = `repeat(${Math.sqrt(num)}, 1fr)`;
 }
 
-fillGrid(64);
+fillGrid(1024);
 
 
 // Erase button functionality. 🙌🏾🙌🏾
 resetBtn.addEventListener('click', () => {
+    // gridAt.setAttribute('class', '.gridpixels');    
     document.querySelectorAll('.gridpixels').forEach(item => {
         item.style.backgroundColor = 'white';
         let colorValue = 'black'
@@ -54,15 +63,22 @@ resetBtn.addEventListener('click', () => {
 
 // Black color button functionality
 blackBtn.addEventListener('click', () => {
+    // gridAt.setAttribute('class', '.gridpixels');    
     colorValue = 'black'
     return colorValue;
 });
 
 // Random color button functionality
 rainbowBtn.addEventListener('click', () => {
-    colorValue = "#" + randomColorVal;
-    console.log(colorValue);
-    return colorValue;
+    document.querySelectorAll('.gridpixels').forEach(item => {
+        item.addEventListener('mouseover', () => {
+            // Sets the css for each itme on event. 
+            item.style.backgroundColor = "#" + ranCol();
+        })  
+    });
+    // colorValue = "#" + ranCol();
+    // console.log(colorValue);
+    // return colorValue;
 });
 
 
