@@ -60,7 +60,7 @@ blackBtn.addEventListener('click', () => {
 
 // Random color button functionality
 rainbowBtn.addEventListener('click', () => {
-    colorValue = randomColorVal;
+    colorValue = "#" + randomColorVal;
     console.log(colorValue);
     return colorValue;
 });
