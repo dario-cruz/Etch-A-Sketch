@@ -16,6 +16,8 @@ const createGridBox = document.createElement('div');
 createGridBox.setAttribute('id', 'pixel');
 createGridBox.setAttribute('class', 'gridpixels');
 
+
+
 // Variable for color defining and changing. 
 let colorValue = 'black';
 
@@ -38,7 +40,7 @@ function fillGrid(num) {
     gridContainer.style.gridTemplateRows = `repeat(${Math.sqrt(num)}, 1fr)`;
 }
 
-fillGrid(256);
+fillGrid(64);
 
 
 // Erase button functionality. 🙌🏾🙌🏾
