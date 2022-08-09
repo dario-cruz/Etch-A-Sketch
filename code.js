@@ -13,7 +13,7 @@ const eraseBtn = document.getElementById('erase');
 const createGridBox = document.createElement('div');
 
 // Adding class for changing color later.
-createGridBox.setAttribute('id', 'pixel');
+// createGridBox.setAttribute('id', 'pixel');
 createGridBox.setAttribute('class', 'gridpixels');
 
 const gridAt = document.querySelectorAll('.gridpixels')
@@ -63,23 +63,35 @@ resetBtn.addEventListener('click', () => {
 
 // Black color button functionality
 blackBtn.addEventListener('click', () => {
-    // gridAt.setAttribute('class', '.gridpixels');    
-    colorValue = 'black'
-    return colorValue;
+    gridAt.addEventListener('mouseover', blackGen());
+    gridAt.removeEventListener('mouseover', eraGen());
+    gridAt.removeEventListener('mouseover', rainGen());
 });
+    // item.removeEventListener('mouseover',)
+    // // gridAt.setAttribute('class', '.gridpixels');    
+    // colorValue = 'black'
+    // return colorValue;
+// });
 
 // Random color button functionality
+// rainbowBtn.addEventListener('click', rainGen());
+
 rainbowBtn.addEventListener('click', () => {
-    document.querySelectorAll('.gridpixels').forEach(item => {
-        item.addEventListener('mouseover', () => {
-            // Sets the css for each itme on event. 
-            item.style.backgroundColor = "#" + ranCol();
-        })  
-    });
-    // colorValue = "#" + ranCol();
-    // console.log(colorValue);
-    // return colorValue;
+    gridAt.addEventListener('mouseover', rainGen());
+    gridAt.removeEventListener('mouseover', eraGen());
+    gridAt.removeEventListener('mouseover', blackGen());
 });
+//     // gridAt.removeEventListener('mouseover');
+//     document.querySelectorAll('.gridpixels').forEach(item => {
+//         item.addEventListener('mouseover', () => {
+//             // Sets the css for each itme on event. 
+//             item.style.backgroundColor = "#" + ranCol();
+//         })  
+//     });
+//     colorValue = "#" + ranCol();
+//     console.log(colorValue);
+//     return colorValue;
+// });
 
 
 // Hover event for grid filling. 
@@ -92,7 +104,34 @@ document.querySelectorAll('.gridpixels').forEach(item => {
 
 // Erase button functionality.
 eraseBtn.addEventListener('click', () => {
-    colorValue = 'white'
-    return colorValue;
+    gridAt.addEventListener('mouseover', eraGen());
+    gridAt.removeEventListener('mouseover', rainGen());
+    gridAt.removeEventListener('mouseover', blackGen());
+    // colorValue = 'white'
+    // return colorValue;
 });
 
+function rainGen() {
+    document.querySelectorAll('.gridpixels').forEach(item => {
+        item.addEventListener('mouseover', () => {
+            // Sets the css for each itme on event. 
+            item.style.backgroundColor = "#" + ranCol();
+        })
+    });  
+}
+
+function blackGen() {
+    document.querySelectorAll('.gridpixels').forEach(item => {
+        item.addEventListener('mouseover', () =>{
+            item.style.backgroundColor = 'black'
+        } )
+    })
+}
+
+function eraGen() {
+    document.querySelectorAll('.gridpixels').forEach(item => {
+        item.addEventListener('mouseover', () =>{
+            item.style.backgroundColor = 'white'
+        } )
+    })
+}
