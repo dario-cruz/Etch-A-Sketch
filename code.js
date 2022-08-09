@@ -4,8 +4,9 @@ const gridSelect = document.getElementById('GridSelect');
 
 // Defining buttons.
 const resetBtn = document.getElementById('reset');
+const blackBtn = document.getElementById('black');
 const chgcolBtn = document.getElementById('changecolor');
-const rainBtn = document.getElementById('rainbow');
+const rainbowBtn = document.getElementById('rainbow');
 const eraseBtn = document.getElementById('erase');
 
 // Defining elements to be created.
@@ -49,11 +50,18 @@ resetBtn.addEventListener('click', () => {
     })
 })
 
-// Random color button functionality
-rainBtn.addEventListener('click', () => {
-    let colorValue = Math.floor(Math.random()*16777215).toString(16);
+// Black color button functionality
+blackBtn.addEventListener('click', () => {
+    colorValue = 'black'
     return colorValue;
-})
+});
+
+// Random color button functionality
+rainbowBtn.addEventListener('click', () => {
+    colorValue = randomColorVal;
+    console.log(colorValue);
+    return colorValue;
+});
 
 
 // Hover event for grid filling. 
@@ -63,3 +71,10 @@ document.querySelectorAll('.gridpixels').forEach(item => {
         item.style.backgroundColor = colorValue;
     })  
 });
+
+// Erase button functionality.
+eraseBtn.addEventListener('click', () => {
+    colorValue = 'white'
+    return colorValue;
+});
+
