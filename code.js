@@ -73,25 +73,13 @@ blackBtn.addEventListener('click', () => {
     // return colorValue;
 // });
 
-// Random color button functionality
-// rainbowBtn.addEventListener('click', rainGen());
-
+// Event listener for rainbow button. Calls the rainGen function to generate
+// the needed colors. 
 rainbowBtn.addEventListener('click', () => {
     gridAt.addEventListener('mouseover', rainGen());
     gridAt.removeEventListener('mouseover', eraGen());
     gridAt.removeEventListener('mouseover', blackGen());
 });
-//     // gridAt.removeEventListener('mouseover');
-//     document.querySelectorAll('.gridpixels').forEach(item => {
-//         item.addEventListener('mouseover', () => {
-//             // Sets the css for each itme on event. 
-//             item.style.backgroundColor = "#" + ranCol();
-//         })  
-//     });
-//     colorValue = "#" + ranCol();
-//     console.log(colorValue);
-//     return colorValue;
-// });
 
 
 // Hover event for grid filling. 
@@ -111,15 +99,17 @@ eraseBtn.addEventListener('click', () => {
     // return colorValue;
 });
 
+// Changes fill color on each mouseover event.
 function rainGen() {
     document.querySelectorAll('.gridpixels').forEach(item => {
         item.addEventListener('mouseover', () => {
-            // Sets the css for each itme on event. 
+            // Sets the css for each item on event. 
             item.style.backgroundColor = "#" + ranCol();
         })
     });  
 }
 
+// Changes fill color to black.
 function blackGen() {
     document.querySelectorAll('.gridpixels').forEach(item => {
         item.addEventListener('mouseover', () =>{
@@ -128,6 +118,7 @@ function blackGen() {
     })
 }
 
+// Function for erase functionality
 function eraGen() {
     document.querySelectorAll('.gridpixels').forEach(item => {
         item.addEventListener('mouseover', () =>{
