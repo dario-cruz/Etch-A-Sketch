@@ -1,6 +1,5 @@
 // Defining html elements. 
 const gridContainer = document.getElementById('gridcontainer');
-const gridSelect = document.getElementById('gridselect');
 
 // Defining buttons.
 const resetBtn = document.getElementById('reset');
@@ -17,8 +16,11 @@ gridChange.addEventListener('click', () => {
     if (sizeSel == 64 || sizeSel == 256 || sizeSel == 1024) {
         //Removed all current nodes / gridpixels.
         removeAllChildNodes(gridContainer);
+        //run grid genfunc
         fillGrid(sizeSel);
+        //set def color to black.
         blackGen();
+        //send msg to user.
         alert("Grid has been updated.");
     } else if (isNaN(sizeSel)) {
         alert("This is not a number.\nTry again.")
@@ -153,11 +155,4 @@ function removeAllChildNodes(parent) {
     }
 }
 
-// Grid selection. On dropdown selection grid size changes. 
-gridSelect.addEventListener("change", () => {
-    let parsedNum = parseInt(this.value);
-    console.log(this.value);
-    console.log(parsedNum);
-    fillGrid(parsedNum);
-});
 
