@@ -1,7 +1,16 @@
 * {
     box-sizing: border-box;
     margin: 0px;
-    border: solid black 2px;
+    /* border: solid black 2px; */
+}
+
+#maintitle {
+    font-family: 'Signika', sans-serif;
+    text-decoration: underline;
+}
+
+.GridContainer {
+    border: solid black 4px;
 }
 
 .GameContainer {
@@ -10,6 +19,7 @@
     margin-left: auto;
     margin-right: auto;
     justify-content: center;
+    border: solid black 4px;
 }
 
 .ButtonContainer {
@@ -18,6 +28,10 @@
     justify-content: start;
     height: 640px;
     margin: 10px;
+}
+
+.ButtonContainer button {
+    margin-bottom: 10px;
 }
 
 .GridContainer {
@@ -33,11 +47,20 @@
     width: 700px;
     margin-left: auto;
     margin-right: auto;
-    margin-left: auto;
-    margin-right: auto;
+    margin-top: 50px;
+    margin-bottom: auto;
+    border: solid black 4px;
 }
 
 .title h1 {
     text-align: center;
+}
+
+button {
+    width: 80px;
+    height: 40px;
+    background-color: black;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
