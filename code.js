@@ -1,6 +1,6 @@
 // Defining html elements. 
 const gridContainer = document.getElementById('gridcontainer');
-const gridSelect = document.getElementById('GridSelect');
+const gridSelect = document.getElementById('gridselect');
 
 // Defining buttons.
 const resetBtn = document.getElementById('reset');
@@ -8,6 +8,21 @@ const blackBtn = document.getElementById('black');
 const chgcolBtn = document.getElementById('changecolor');
 const rainbowBtn = document.getElementById('rainbow');
 const eraseBtn = document.getElementById('erase');
+
+// Def button to prompt user for grid size.
+const gridChange = document.getElementById('gridchange');
+
+gridChange.addEventListener('click', () => {
+    let sizeSel = prompt("Please enter grid size.\nOptions are 64,256,1024")
+    if (sizeSel == 64 || sizeSel == 256 || sizeSel == 1024) {
+        fillGrid(sizeSel);
+        alert("Grid has been updated.");
+    } else if (isNaN(sizeSel)) {
+        alert("This is not a number.\nTry again.")
+    } else {
+        return
+    }
+})
 
 // Defining elements to be created.
 const createGridBox = document.createElement('div');
@@ -112,7 +127,8 @@ function rainGen() {
 // Changes fill color to black.
 function blackGen() {
     document.querySelectorAll('.gridpixels').forEach(item => {
-        item.addEventListener('mouseover', () =>{
+        item.addEventListener('mouseover', () => {
+
             item.style.backgroundColor = 'black'
         } )
     })
@@ -121,8 +137,16 @@ function blackGen() {
 // Function for erase functionality
 function eraGen() {
     document.querySelectorAll('.gridpixels').forEach(item => {
-        item.addEventListener('mouseover', () =>{
+        item.addEventListener('mouseover', () => {
             item.style.backgroundColor = 'white'
         } )
     })
 }
+
+// Grid selection. On dropdown selection grid size changes. 
+gridSelect.addEventListener("change", () => {
+    let parsedNum = parseInt(this.value);
+    console.log(this.value);
+    console.log(parsedNum);
+    fillGrid(parsedNum);
+});
