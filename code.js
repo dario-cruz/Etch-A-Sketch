@@ -4,7 +4,7 @@ const gridContainer = document.getElementById('gridcontainer');
 // Defining buttons.
 const resetBtn = document.getElementById('reset');
 const blackBtn = document.getElementById('black');
-const chgcolBtn = document.getElementById('changecolor');
+const colorBtn = document.getElementById('changecolor');
 const rainbowBtn = document.getElementById('rainbow');
 const eraseBtn = document.getElementById('erase');
 
@@ -36,6 +36,7 @@ const createGridBox = document.createElement('div');
 // createGridBox.setAttribute('id', 'pixel');
 createGridBox.setAttribute('class', 'gridpixels');
 
+// Defining const for pixels.
 const gridAt = document.querySelectorAll('.gridpixels')
 
 
@@ -68,7 +69,7 @@ function fillGrid(num) {
     gridContainer.style.gridTemplateRows = `repeat(${Math.sqrt(num)}, 1fr)`;
 }
 
-fillGrid(1024);
+fillGrid(64);
 
 
 // Erase button functionality. 🙌🏾🙌🏾
@@ -76,7 +77,7 @@ resetBtn.addEventListener('click', () => {
     // gridAt.setAttribute('class', '.gridpixels');    
     document.querySelectorAll('.gridpixels').forEach(item => {
         item.style.backgroundColor = 'white';
-        let colorValue = 'black'
+        colorValue = 'black'
         return colorValue;
     })
 })
@@ -84,21 +85,20 @@ resetBtn.addEventListener('click', () => {
 // Black color button functionality
 blackBtn.addEventListener('click', () => {
     gridAt.addEventListener('mouseover', blackGen());
-    gridAt.removeEventListener('mouseover', eraGen());
-    gridAt.removeEventListener('mouseover', rainGen());
-});
-    // item.removeEventListener('mouseover',)
-    // // gridAt.setAttribute('class', '.gridpixels');    
-    // colorValue = 'black'
+    gridAt.removeEventListener('mouseover', eraGen(), false);
+    gridAt.removeEventListener('mouseover', rainGen(), false);
+    gridAt.removeEventListener('mouseover', colGen(), false);
+    // colorValue = 'black';
     // return colorValue;
-// });
+});
 
 // Event listener for rainbow button. Calls the rainGen function to generate
 // the needed colors. 
 rainbowBtn.addEventListener('click', () => {
     gridAt.addEventListener('mouseover', rainGen());
-    gridAt.removeEventListener('mouseover', eraGen());
-    gridAt.removeEventListener('mouseover', blackGen());
+    gridAt.removeEventListener('mouseover', eraGen(), false);
+    gridAt.removeEventListener('mouseover', blackGen(), false);
+    gridAt.removeEventListener('mouseover', calGen(), false);
 });
 
 
@@ -113,10 +113,18 @@ document.querySelectorAll('.gridpixels').forEach(item => {
 // Erase button functionality.
 eraseBtn.addEventListener('click', () => {
     gridAt.addEventListener('mouseover', eraGen());
-    gridAt.removeEventListener('mouseover', rainGen());
-    gridAt.removeEventListener('mouseover', blackGen());
+    gridAt.removeEventListener('mouseover', colGen(), false);
+    gridAt.removeEventListener('mouseover', rainGen(), false);
+    gridAt.removeEventListener('mouseover', blackGen(), false);
     // colorValue = 'white'
-    // return colorValue;
+});
+
+// Color btn functionality
+colorBtn.addEventListener('click', () => {
+    gridAt.addEventListener('mouseover', colGen());
+    gridAt.removeEventListener('mouseover', blackGen(), false);
+    gridAt.removeEventListener('mouseover', rainGen(), false);
+    gridAt.removeEventListener('mouseover', erakGen(), false);
 });
 
 // Changes fill color on each mouseover event.
@@ -145,6 +153,15 @@ function eraGen() {
         item.addEventListener('mouseover', () => {
             item.style.backgroundColor = 'white'
         } )
+    })
+}
+
+// Function for color.
+function colGen() {
+    document.querySelectorAll('.gridpixels').forEach(item => {
+        item.addEventListener('mouseover', () => {
+            item.style.backgroundColor = Math.floor(Math.random()*16777215).toString(16)
+        })
     })
 }
 
