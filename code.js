@@ -15,7 +15,10 @@ const gridChange = document.getElementById('gridchange');
 gridChange.addEventListener('click', () => {
     let sizeSel = prompt("Please enter grid size.\nOptions are 64,256,1024")
     if (sizeSel == 64 || sizeSel == 256 || sizeSel == 1024) {
+        //Removed all current nodes / gridpixels.
+        removeAllChildNodes(gridContainer);
         fillGrid(sizeSel);
+        blackGen();
         alert("Grid has been updated.");
     } else if (isNaN(sizeSel)) {
         alert("This is not a number.\nTry again.")
@@ -143,6 +146,13 @@ function eraGen() {
     })
 }
 
+// Remove all gridpixels func
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild)
+    }
+}
+
 // Grid selection. On dropdown selection grid size changes. 
 gridSelect.addEventListener("change", () => {
     let parsedNum = parseInt(this.value);
@@ -150,3 +160,4 @@ gridSelect.addEventListener("change", () => {
     console.log(parsedNum);
     fillGrid(parsedNum);
 });
+
