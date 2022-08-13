@@ -7,6 +7,7 @@
 #maintitle {
     font-family: 'Signika', sans-serif;
     text-decoration: underline;
+    text-align: center;
 }
 
 .GridContainer {
@@ -16,10 +17,12 @@
 .GameContainer {
     display: flex;
     width: 700px;
+    margin-top: -4px;
     margin-left: auto;
     margin-right: auto;
     justify-content: center;
     border: solid black 4px;
+    box-shadow: 5px 5px 0 black;
 }
 
 .ButtonContainer {
@@ -52,8 +55,8 @@
     border: solid black 4px;
 }
 
-.title h1 {
-    text-align: center;
+#gridchange {
+    margin: auto;   
 }
 
 button {
