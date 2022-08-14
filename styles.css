@@ -56,6 +56,7 @@ body {
     margin: 10px;
     display: grid;
     gap: 0px;
+    background-color: white;
     grid-template-columns: repeat(8, 1fr);
 }
 
@@ -87,4 +88,10 @@ button {
 button:hover {
     background-color: var(--bdrcolor);
     color: white;
+}
+
+.page {
+    /* border: solid black 2px; */
+    margin: auto;
+    width: 700px;
 }
