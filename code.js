@@ -11,6 +11,9 @@ const eraseBtn = document.getElementById('erase');
 // Def button to prompt user for grid size.
 const gridChange = document.getElementById('gridchange');
 
+// Colors for color button.
+const colArray = ['red', 'green', 'blue', 'orange', 'brown', 'purple', 'wheat', 'aqua', 'teal', 'grey']
+
 gridChange.addEventListener('click', () => {
     let sizeSel = prompt("Please enter grid size.\nOptions are 64,256,1024")
     if (sizeSel == 64 || sizeSel == 256 || sizeSel == 1024) {
@@ -71,6 +74,13 @@ function fillGrid(num) {
 
 fillGrid(64);
 
+// Hover event for grid filling. 
+document.querySelectorAll('.gridpixels').forEach(item => {
+    item.addEventListener('mouseover', () => {
+        // Sets the css for each item on event. 
+        item.style.backgroundColor = colorValue;
+    })  
+});
 
 // Erase button functionality. 🙌🏾🙌🏾
 resetBtn.addEventListener('click', () => {
@@ -78,53 +88,35 @@ resetBtn.addEventListener('click', () => {
     document.querySelectorAll('.gridpixels').forEach(item => {
         item.style.backgroundColor = 'white';
         colorValue = 'black'
+        console.log(colorValue)
         return colorValue;
     })
 })
 
 // Black color button functionality
 blackBtn.addEventListener('click', () => {
-    gridAt.addEventListener('mouseover', blackGen());
-    gridAt.removeEventListener('mouseover', eraGen(), false);
-    gridAt.removeEventListener('mouseover', rainGen(), false);
-    gridAt.removeEventListener('mouseover', colGen(), false);
-    // colorValue = 'black';
-    // return colorValue;
+    // gridAt.replaceWith(gridAt.cloneNode(true))
+    blackGen();
 });
 
 // Event listener for rainbow button. Calls the rainGen function to generate
 // the needed colors. 
 rainbowBtn.addEventListener('click', () => {
-    gridAt.addEventListener('mouseover', rainGen());
-    gridAt.removeEventListener('mouseover', eraGen(), false);
-    gridAt.removeEventListener('mouseover', blackGen(), false);
-    gridAt.removeEventListener('mouseover', calGen(), false);
-});
-
-
-// Hover event for grid filling. 
-document.querySelectorAll('.gridpixels').forEach(item => {
-    item.addEventListener('mouseover', () => {
-        // Sets the css for each itme on event. 
-        item.style.backgroundColor = colorValue;
-    })  
+    // gridAt.replaceWith(gridAt.cloneNode(true))
+    rainGen();
+   
 });
 
 // Erase button functionality.
 eraseBtn.addEventListener('click', () => {
-    gridAt.addEventListener('mouseover', eraGen());
-    gridAt.removeEventListener('mouseover', colGen(), false);
-    gridAt.removeEventListener('mouseover', rainGen(), false);
-    gridAt.removeEventListener('mouseover', blackGen(), false);
-    // colorValue = 'white'
+    // gridAt.replaceWith(gridAt.cloneNode(true))
+    eraGen();
 });
 
 // Color btn functionality
 colorBtn.addEventListener('click', () => {
-    gridAt.addEventListener('mouseover', colGen());
-    gridAt.removeEventListener('mouseover', blackGen(), false);
-    gridAt.removeEventListener('mouseover', rainGen(), false);
-    gridAt.removeEventListener('mouseover', erakGen(), false);
+    // gridAt.removeEventListener('mouseover', erakGen(), false);
+    colGen();
 });
 
 // Changes fill color on each mouseover event.
@@ -141,7 +133,6 @@ function rainGen() {
 function blackGen() {
     document.querySelectorAll('.gridpixels').forEach(item => {
         item.addEventListener('mouseover', () => {
-
             item.style.backgroundColor = 'black'
         } )
     })
@@ -158,9 +149,10 @@ function eraGen() {
 
 // Function for color.
 function colGen() {
+    colorValue = colArray[Math.floor(Math.random() * colArray.length)]
     document.querySelectorAll('.gridpixels').forEach(item => {
         item.addEventListener('mouseover', () => {
-            item.style.backgroundColor = Math.floor(Math.random()*16777215).toString(16)
+            item.style.backgroundColor = colorValue;
         })
     })
 }
