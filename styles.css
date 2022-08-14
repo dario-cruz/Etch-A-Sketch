@@ -4,6 +4,18 @@
     /* border: solid black 2px; */
 }
 
+/* Trying out custom CSS properties */
+:root {
+    --bgcolor: #F0EBE3;
+    --accentcolor: #E4DCCF;
+    --txtcolor: #7D9D9C;
+    --bdrcolor: #576F72;
+}
+
+body {
+    background-color: var(--bgcolor);
+}
+
 #maintitle {
     font-family: 'Signika', sans-serif;
     text-decoration: underline;
@@ -11,7 +23,7 @@
 }
 
 .GridContainer {
-    border: solid black 4px;
+    border: solid var(--bdrcolor) 4px;
 }
 
 .GameContainer {
@@ -23,6 +35,7 @@
     justify-content: center;
     border: solid black 4px;
     box-shadow: 5px 5px 0 black;
+    background-color: var(--accentcolor);
 }
 
 .ButtonContainer {
@@ -53,6 +66,7 @@
     margin-top: 50px;
     margin-bottom: auto;
     border: solid black 4px;
+    background-color: var(--accentcolor);
 }
 
 #gridchange {
