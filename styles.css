@@ -23,7 +23,7 @@ body {
 }
 
 .GridContainer {
-    border: solid var(--bdrcolor) 4px;
+    border: solid black 4px;
 }
 
 .GameContainer {
@@ -70,14 +70,21 @@ body {
 }
 
 #gridchange {
-    margin: auto;   
+    margin-bottom: 5px;
+    margin-left: 10px;
 }
 
 button {
     width: 80px;
     height: 40px;
-    background-color: black;
-    color: white;
+    border: solid black 3px;
+    background-color: var(--txtcolor);
+    color: black;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 700;
 }
 
+button:hover {
+    background-color: var(--bdrcolor);
+    color: white;
+}
